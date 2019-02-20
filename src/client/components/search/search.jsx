@@ -54,12 +54,11 @@ class Search extends React.Component {
 
     addToCart(item) {
         let tempProduct =  Object.assign({}, item);
-        let tempCartList = [tempProduct...this.state.cartItem];
+        let tempCartList = [tempProduct,...this.state.cartItem];
         this.setState({cartItem : tempCartList});
     }
 
   render() {
-    console.log("cart item: " + this.state.cartItem);
     let itemsElements = [];
     let eachProduct = [];
 
@@ -96,7 +95,7 @@ class Search extends React.Component {
                     </button>
                 </div>
             )
-        })
+        });
     }
 
     return (
@@ -107,13 +106,13 @@ class Search extends React.Component {
         </div> <br/>
         <div>
             {itemsElements}
-        </div> <br/>
+        </div>
+        <h2> Product </h2>
         <div>
             {eachProduct}
         </div>
-        <div>
-            <Cart productAddToCart={this.state.productAddToCart}/>
-        </div>
+         <h2> Cart Items </h2>
+        <Cart cartItem={this.state.cartItem} />
       </div>
     );
   }

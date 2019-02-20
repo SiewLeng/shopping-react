@@ -5,21 +5,28 @@ import PropTypes from 'prop-types';
 import styles from './style.scss';
 import main_styles from '../../style.scss';
 
-class Product extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-        cartItem: []
-    };
-  }
+class Cart extends React.Component {
+    constructor() {
+        super();
+    }
 
-  render() {
-    return (
-      <div>
-          <h3> this.props.product["name"]</h3>
-      </div>
-    );
-  }
+    render() {
+        let itemElements = this.props.cartItem.map((item, index) => {
+            return (
+                <div key={index}>
+                    <img src={item.mediumImage}/>
+                    <h4 > {item.name} </h4>
+                    <h4> USD {item.salePrice} </h4>
+                </div>
+            )
+        })
+
+        return (
+            <div>
+                {itemElements}
+            </div>
+        );
+    }
 }
 
-export default Product;
+export default Cart;
